@@ -3,36 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShyamRiwaaz | GOD MODE</title>
+<title>ShyamRiwaaz | Luxury Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-body{
-margin:0;
-font-family:Inter;
-background:#050505;
-color:white;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
+body{background:#050505;color:white;overflow-x:hidden;}
 
+/* HEADER */
 header{
-display:flex;
-justify-content:space-between;
-padding:15px 20px;
 position:sticky;
 top:0;
 background:rgba(0,0,0,0.7);
 backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+z-index:10;
 }
 
-h1{font-family:"Playfair Display";font-size:22px;}
+.logo{
+font-family:"Playfair Display";
+font-size:22px;
+letter-spacing:1px;
+}
 
+.btn{
+padding:8px 14px;
+border:1px solid #d4af37;
+background:transparent;
+color:#d4af37;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* HERO */
+.hero{
+height:60vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:radial-gradient(circle at top,#1a1a1a,#000);
+padding:20px;
+}
+
+.hero h1{
+font-family:"Playfair Display";
+font-size:40px;
+}
+
+.hero p{
+opacity:0.7;
+margin-top:10px;
+}
+
+/* PRODUCTS */
 .container{
 display:flex;
 flex-wrap:wrap;
 gap:20px;
-padding:30px;
 justify-content:center;
+padding:30px;
 }
 
 .card{
@@ -44,21 +79,19 @@ border-radius:15px;
 transition:0.3s;
 }
 
-.card:hover{transform:translateY(-6px);border-color:#d4af37;}
+.card:hover{transform:translateY(-5px);border-color:#d4af37;}
 
+.card h3{font-family:"Playfair Display";}
 .price{color:#d4af37;margin:8px 0;}
 
-button{
-cursor:pointer;
-border:none;
-border-radius:10px;
-padding:10px;
-}
-
-.add{
+.card button{
 width:100%;
+padding:10px;
+border:none;
+border-radius:8px;
 background:#d4af37;
 color:black;
+cursor:pointer;
 }
 
 /* CART BUTTON */
@@ -67,13 +100,14 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-width:60px;
-height:60px;
+width:55px;
+height:55px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:24px;
+font-size:22px;
+cursor:pointer;
 }
 
 /* MODAL */
@@ -85,61 +119,65 @@ width:100%;height:100%;
 background:rgba(0,0,0,0.8);
 align-items:center;
 justify-content:center;
-z-index:999;
+z-index:100;
 }
 
 .box{
-width:92%;
+width:90%;
 max-width:420px;
 background:#111;
 padding:20px;
 border-radius:15px;
 }
 
-input,textarea{
-width:100%;
-margin:5px 0;
-padding:10px;
-background:#000;
-border:1px solid #333;
-color:white;
-border-radius:8px;
-}
-
 .row{
 display:flex;
 justify-content:space-between;
+margin:6px 0;
 font-size:14px;
-margin:5px 0;
 }
 
 .total{
 color:#d4af37;
-font-weight:bold;
 margin-top:10px;
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:8px;
+border:none;
+border-radius:8px;
+background:#000;
+color:white;
 }
 
 .smallBtn{
-background:#25D366;
 width:100%;
+padding:10px;
 margin-top:10px;
+background:#25D366;
+border:none;
+border-radius:8px;
+cursor:pointer;
 }
 
 .close{
 background:#333;
-width:100%;
-margin-top:8px;
 color:white;
 }
 
+/* ADMIN */
 .adminBtn{
 position:fixed;
 left:20px;
 bottom:20px;
 background:#444;
 color:white;
-padding:10px 14px;
+padding:10px 12px;
 border-radius:10px;
+cursor:pointer;
 }
 
 </style>
@@ -148,9 +186,15 @@ border-radius:10px;
 <body>
 
 <header>
-<h1>ShyamRiwaaz</h1>
-<button onclick="openAdmin()">Admin</button>
+<div class="logo">✨ ShyamRiwaaz</div>
+<button class="btn" onclick="openAdmin()">Admin</button>
 </header>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Luxury • Memories • Creations</h1>
+<p>Premium custom magazines, polaroids & gifts</p>
+</div>
 
 <!-- PRODUCTS -->
 <div class="container">
@@ -158,25 +202,25 @@ border-radius:10px;
 <div class="card">
 <h3>Luxury Magazine</h3>
 <div class="price">₹450</div>
-<button class="add" onclick="add('Luxury Magazine',450)">Add</button>
+<button onclick="add('Luxury Magazine',450)">Add to Cart</button>
 </div>
 
 <div class="card">
 <h3>Polaroid Set</h3>
 <div class="price">₹250</div>
-<button class="add" onclick="add('Polaroid Set',250)">Add</button>
+<button onclick="add('Polaroid Set',250)">Add to Cart</button>
 </div>
 
 <div class="card">
 <h3>Frame Design</h3>
 <div class="price">₹300</div>
-<button class="add" onclick="add('Frame Design',300)">Add</button>
+<button onclick="add('Frame Design',300)">Add to Cart</button>
 </div>
 
 <div class="card">
 <h3>Gift Album</h3>
 <div class="price">₹650</div>
-<button class="add" onclick="add('Gift Album',650)">Add</button>
+<button onclick="add('Gift Album',650)">Add to Cart</button>
 </div>
 
 </div>
@@ -191,14 +235,13 @@ border-radius:10px;
 <div class="modal" id="cart">
 <div class="box">
 <h2>Your Cart</h2>
-<div id="cartItems"></div>
+<div id="items"></div>
 <div class="total" id="total"></div>
 
-<input id="address" placeholder="Delivery Address">
-<input id="coupon" placeholder="Coupon Code">
+<input id="address" placeholder="Enter Address">
 
 <button class="smallBtn" onclick="checkout()">Checkout WhatsApp</button>
-<button class="close" onclick="closeCart()">Close</button>
+<button class="smallBtn close" onclick="closeCart()">Close</button>
 </div>
 </div>
 
@@ -208,17 +251,16 @@ border-radius:10px;
 <h2>Admin Panel</h2>
 
 <input id="pass" placeholder="Enter Password">
+<button class="smallBtn" onclick="login()">Login</button>
 
-<button class="smallBtn" onclick="loginAdmin()">Login</button>
-
-<div id="adminPanel" style="display:none;">
+<div id="panel" style="display:none;">
 <h3>Orders</h3>
 <div id="orders"></div>
 
 <button class="smallBtn" onclick="exportCSV()">Export CSV</button>
 </div>
 
-<button class="close" onclick="closeAdmin()">Close</button>
+<button class="smallBtn close" onclick="closeAdmin()">Close</button>
 </div>
 </div>
 
@@ -230,19 +272,19 @@ let orders = JSON.parse(localStorage.getItem("orders")) || [];
 function add(name,price){
 cart.push({name,price});
 localStorage.setItem("cart",JSON.stringify(cart));
-alert(name+" added");
+alert("Added to cart");
 }
 
 function openCart(){
 document.getElementById("cart").style.display="flex";
-renderCart();
+render();
 }
 
 function closeCart(){
 document.getElementById("cart").style.display="none";
 }
 
-function renderCart(){
+function render(){
 let html="";
 let total=0;
 
@@ -251,25 +293,15 @@ html+=`<div class="row"><span>${i.name}</span><span>₹${i.price}</span></div>`;
 total+=i.price;
 });
 
-document.getElementById("cartItems").innerHTML=html;
+document.getElementById("items").innerHTML=html;
 document.getElementById("total").innerText="Total: ₹"+total;
 }
 
 function checkout(){
 
 let address=document.getElementById("address").value;
-let coupon=document.getElementById("coupon").value;
 
-let discount=0;
 let total=cart.reduce((a,b)=>a+b.price,0);
-
-// coupon system
-if(coupon==="SHYAM10") discount=total*0.1;
-
-let finalTotal=total-discount;
-
-// delivery rule
-if(finalTotal<500) finalTotal+=50;
 
 let phone="91XXXXXXXXXX";
 
@@ -280,11 +312,11 @@ msg+=i.name+" - ₹"+i.price+"\n";
 });
 
 msg+="\nAddress: "+address;
-msg+="\nTotal: ₹"+finalTotal;
+msg+="\nTotal: ₹"+total;
 
 window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
 
-orders.push({cart,address,finalTotal,date:new Date().toLocaleString()});
+orders.push({cart,address,total,date:new Date().toLocaleString()});
 localStorage.setItem("orders",JSON.stringify(orders));
 
 cart=[];
@@ -299,25 +331,21 @@ function closeAdmin(){
 document.getElementById("admin").style.display="none";
 }
 
-function loginAdmin(){
+function login(){
 let pass=document.getElementById("pass").value;
 
 if(pass==="admin123"){
-document.getElementById("adminPanel").style.display="block";
-renderOrders();
+document.getElementById("panel").style.display="block";
+showOrders();
 }else{
 alert("Wrong password");
 }
 }
 
-function renderOrders(){
+function showOrders(){
 let html="";
 orders.forEach((o,i)=>{
-html+=`<div style="border-bottom:1px solid #333;margin:10px 0;">
-<b>Order ${i+1}</b><br>
-₹${o.finalTotal}<br>
-${o.date}
-</div>`;
+html+=`<div class="row"><span>Order ${i+1}</span><span>₹${o.total}</span></div>`;
 });
 document.getElementById("orders").innerHTML=html;
 }
@@ -325,7 +353,7 @@ document.getElementById("orders").innerHTML=html;
 function exportCSV(){
 let csv="Order,Total,Date\n";
 orders.forEach(o=>{
-csv+=`Order,${o.finalTotal},${o.date}\n`;
+csv+=`Order,${o.total},${o.date}\n`;
 });
 
 let blob=new Blob([csv],{type:"text/csv"});
@@ -338,4 +366,4 @@ a.click();
 </script>
 
 </body>
-  </html>
+</html>
