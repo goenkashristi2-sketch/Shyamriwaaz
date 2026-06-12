@@ -1,368 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShyamRiwaaz | Luxury Store</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+<title>ShyamRiwaaz</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
-body{background:#050505;color:white;overflow-x:hidden;}
-
-/* HEADER */
-header{
-position:sticky;
-top:0;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-z-index:10;
-}
-
-.logo{
-font-family:"Playfair Display";
-font-size:22px;
-letter-spacing:1px;
-}
-
-.btn{
-padding:8px 14px;
-border:1px solid #d4af37;
-background:transparent;
-color:#d4af37;
-border-radius:20px;
-cursor:pointer;
-}
-
-/* HERO */
-.hero{
-height:60vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:radial-gradient(circle at top,#1a1a1a,#000);
-padding:20px;
-}
-
-.hero h1{
-font-family:"Playfair Display";
-font-size:40px;
-}
-
-.hero p{
-opacity:0.7;
-margin-top:10px;
-}
-
-/* PRODUCTS */
-.container{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-padding:30px;
-}
-
-.card{
-width:240px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-padding:15px;
-border-radius:15px;
-transition:0.3s;
-}
-
-.card:hover{transform:translateY(-5px);border-color:#d4af37;}
-
-.card h3{font-family:"Playfair Display";}
-.price{color:#d4af37;margin:8px 0;}
-
-.card button{
-width:100%;
-padding:10px;
-border:none;
-border-radius:8px;
-background:#d4af37;
-color:black;
-cursor:pointer;
-}
-
-/* CART BUTTON */
-.cartBtn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-width:55px;
-height:55px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-cursor:pointer;
-}
-
-/* MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.8);
-align-items:center;
-justify-content:center;
-z-index:100;
-}
-
-.box{
-width:90%;
-max-width:420px;
-background:#111;
-padding:20px;
-border-radius:15px;
-}
-
-.row{
-display:flex;
-justify-content:space-between;
-margin:6px 0;
-font-size:14px;
-}
-
-.total{
-color:#d4af37;
-margin-top:10px;
-font-weight:bold;
-}
-
-input{
-width:100%;
-padding:10px;
-margin-top:8px;
-border:none;
-border-radius:8px;
-background:#000;
-color:white;
-}
-
-.smallBtn{
-width:100%;
-padding:10px;
-margin-top:10px;
-background:#25D366;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-.close{
-background:#333;
-color:white;
-}
-
-/* ADMIN */
-.adminBtn{
-position:fixed;
-left:20px;
-bottom:20px;
-background:#444;
-color:white;
-padding:10px 12px;
-border-radius:10px;
-cursor:pointer;
-}
-
+body{margin:0;font-family:Arial;background:#111;color:white;text-align:center;padding-top:100px;}
+.box{background:#222;padding:20px;margin:20px;border-radius:10px;display:inline-block;}
+button{padding:10px;border:none;background:#d4af37;color:black;border-radius:8px;}
 </style>
 </head>
-
 <body>
 
-<header>
-<div class="logo">✨ ShyamRiwaaz</div>
-<button class="btn" onclick="openAdmin()">Admin</button>
-</header>
+<h1>ShyamRiwaaz Store</h1>
 
-<!-- HERO -->
-<div class="hero">
-<h1>Luxury • Memories • Creations</h1>
-<p>Premium custom magazines, polaroids & gifts</p>
-</div>
-
-<!-- PRODUCTS -->
-<div class="container">
-
-<div class="card">
+<div class="box">
 <h3>Luxury Magazine</h3>
-<div class="price">₹450</div>
-<button onclick="add('Luxury Magazine',450)">Add to Cart</button>
+<p>₹450</p>
+<button onclick="alert('Added')">Add</button>
 </div>
 
-<div class="card">
+<div class="box">
 <h3>Polaroid Set</h3>
-<div class="price">₹250</div>
-<button onclick="add('Polaroid Set',250)">Add to Cart</button>
+<p>₹250</p>
+<button onclick="alert('Added')">Add</button>
 </div>
 
-<div class="card">
-<h3>Frame Design</h3>
-<div class="price">₹300</div>
-<button onclick="add('Frame Design',300)">Add to Cart</button>
-</div>
+<br><br>
 
-<div class="card">
-<h3>Gift Album</h3>
-<div class="price">₹650</div>
-<button onclick="add('Gift Album',650)">Add to Cart</button>
-</div>
+<button onclick="openAdmin()">Admin Panel</button>
 
-</div>
-
-<!-- CART BUTTON -->
-<div class="cartBtn" onclick="openCart()">🛒</div>
-
-<!-- ADMIN BUTTON -->
-<button class="adminBtn" onclick="openAdmin()">ADMIN</button>
-
-<!-- CART -->
-<div class="modal" id="cart">
-<div class="box">
-<h2>Your Cart</h2>
-<div id="items"></div>
-<div class="total" id="total"></div>
-
-<input id="address" placeholder="Enter Address">
-
-<button class="smallBtn" onclick="checkout()">Checkout WhatsApp</button>
-<button class="smallBtn close" onclick="closeCart()">Close</button>
-</div>
-</div>
-
-<!-- ADMIN -->
-<div class="modal" id="admin">
-<div class="box">
+<div id="admin" style="display:none;">
+<br><br>
 <h2>Admin Panel</h2>
-
-<input id="pass" placeholder="Enter Password">
-<button class="smallBtn" onclick="login()">Login</button>
-
-<div id="panel" style="display:none;">
-<h3>Orders</h3>
-<div id="orders"></div>
-
-<button class="smallBtn" onclick="exportCSV()">Export CSV</button>
-</div>
-
-<button class="smallBtn close" onclick="closeAdmin()">Close</button>
-</div>
+<p>Password: admin123</p>
 </div>
 
 <script>
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
-
-function add(name,price){
-cart.push({name,price});
-localStorage.setItem("cart",JSON.stringify(cart));
-alert("Added to cart");
-}
-
-function openCart(){
-document.getElementById("cart").style.display="flex";
-render();
-}
-
-function closeCart(){
-document.getElementById("cart").style.display="none";
-}
-
-function render(){
-let html="";
-let total=0;
-
-cart.forEach(i=>{
-html+=`<div class="row"><span>${i.name}</span><span>₹${i.price}</span></div>`;
-total+=i.price;
-});
-
-document.getElementById("items").innerHTML=html;
-document.getElementById("total").innerText="Total: ₹"+total;
-}
-
-function checkout(){
-
-let address=document.getElementById("address").value;
-
-let total=cart.reduce((a,b)=>a+b.price,0);
-
-let phone="91XXXXXXXXXX";
-
-let msg="🛍️ ORDER\n\n";
-
-cart.forEach(i=>{
-msg+=i.name+" - ₹"+i.price+"\n";
-});
-
-msg+="\nAddress: "+address;
-msg+="\nTotal: ₹"+total;
-
-window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
-
-orders.push({cart,address,total,date:new Date().toLocaleString()});
-localStorage.setItem("orders",JSON.stringify(orders));
-
-cart=[];
-localStorage.removeItem("cart");
-}
-
 function openAdmin(){
-document.getElementById("admin").style.display="flex";
+document.getElementById('admin').style.display='block';
 }
-
-function closeAdmin(){
-document.getElementById("admin").style.display="none";
-}
-
-function login(){
-let pass=document.getElementById("pass").value;
-
-if(pass==="admin123"){
-document.getElementById("panel").style.display="block";
-showOrders();
-}else{
-alert("Wrong password");
-}
-}
-
-function showOrders(){
-let html="";
-orders.forEach((o,i)=>{
-html+=`<div class="row"><span>Order ${i+1}</span><span>₹${o.total}</span></div>`;
-});
-document.getElementById("orders").innerHTML=html;
-}
-
-function exportCSV(){
-let csv="Order,Total,Date\n";
-orders.forEach(o=>{
-csv+=`Order,${o.total},${o.date}\n`;
-});
-
-let blob=new Blob([csv],{type:"text/csv"});
-let a=document.createElement("a");
-a.href=URL.createObjectURL(blob);
-a.download="orders.csv";
-a.click();
-}
-
 </script>
 
 </body>
