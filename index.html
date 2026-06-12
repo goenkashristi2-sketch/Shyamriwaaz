@@ -1,44 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>ShyamRiwaaz</title>
+
 <style>
-body{margin:0;font-family:Arial;background:#111;color:white;text-align:center;padding-top:100px;}
-.box{background:#222;padding:20px;margin:20px;border-radius:10px;display:inline-block;}
-button{padding:10px;border:none;background:#d4af37;color:black;border-radius:8px;}
+body{
+margin:0;
+font-family:Arial;
+background:#0a0a0a;
+color:white;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:radial-gradient(circle,#1a1a1a,#000);
+padding:20px;
+}
+
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+p{
+opacity:0.7;
+}
+
+button{
+margin-top:20px;
+padding:12px 20px;
+border:none;
+border-radius:25px;
+background:#d4af37;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+.section{
+padding:40px 20px;
+text-align:center;
+}
+
+.card{
+background:#1a1a1a;
+padding:15px;
+margin:10px;
+border-radius:10px;
+display:inline-block;
+width:200px;
+}
+
 </style>
 </head>
+
 <body>
 
-<h1>ShyamRiwaaz Store</h1>
-
-<div class="box">
-<h3>Luxury Magazine</h3>
-<p>₹450</p>
-<button onclick="alert('Added')">Add</button>
+<div class="hero">
+<h1>ShyamRiwaaz</h1>
+<p>Luxury • Memories • Custom Creations</p>
+<button onclick="alert('Next step: Add products')">Order Now</button>
 </div>
 
-<div class="box">
-<h3>Polaroid Set</h3>
-<p>₹250</p>
-<button onclick="alert('Added')">Add</button>
+<div class="section">
+<h2>Our Services</h2>
+
+<div class="card">Luxury Magazine</div>
+<div class="card">Polaroid Prints</div>
+<div class="card">Gift Albums</div>
+<div class="card">Custom Frames</div>
+
 </div>
-
-<br><br>
-
-<button onclick="openAdmin()">Admin Panel</button>
-
-<div id="admin" style="display:none;">
-<br><br>
-<h2>Admin Panel</h2>
-<p>Password: admin123</p>
-</div>
-
-<script>
-function openAdmin(){
-document.getElementById('admin').style.display='block';
-}
-</script>
 
 </body>
 </html>
